@@ -10,7 +10,8 @@ const Movies = () => {
   const [favourites, setFavourites] = useState(new Set());
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
-  const MOVIES_PER_PAGE = 10;
+
+  const MOVIES_PER_PAGE = 9;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,11 +53,11 @@ const Movies = () => {
 
   return (
     <div className="w-auto h-auto flex flex-wrap items-center justify-evenly gap-2 p-2">
-      <div className="sort-buttons absolute hidden top-[63%] right-44 lg:flex flex-col mb-4">
+      <div className="sort-buttons lg:w-fit w-[70vw] text-center absolute top-[22%]  lg:top-[63%] right-2 lg:right-44 lg:flex flex-col mb-4">
         <h1 className="text-xl bg-red-500 text-white p-2 rounded-md relative">
           Sort by
         </h1>
-        <div className="content absolute flex flex-col bg-zinc-200 p-2 rounded-md gap-1 text-slate-950 w-max">
+        <div className="content  absolute right-0 top-10 flex flex-col bg-zinc-200 p-2 rounded-md gap-1 text-slate-950 w-max">
           <button onClick={() => setSortOrder("asc")}>
             Rating (Low to High)
           </button>

@@ -1,8 +1,10 @@
+import Footer from '../Components/Footer'
 import Main from '../Components/Main'
 const HomePage = () => {
   return (
     <div>
-      <Main/>
+      <Main />
+      <Footer/>
     </div>
   )
 }
