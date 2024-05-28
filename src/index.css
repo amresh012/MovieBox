@@ -8,3 +8,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.sort-buttons{
+  display: block;
+}
+.sort-buttons .content{
+   display: none;
+}
+.sort-buttons:hover .content{
+  display: flex;
+}
+.favourite-container{
+  background-image: url("./assets/view-3d-cinema-theatre-room.jpg");
+  background-size: cover;
+  background-position:  center;
+  background-color: rgba(0, 0, 29, 0.533);
+  background-blend-mode: multiply;
+}

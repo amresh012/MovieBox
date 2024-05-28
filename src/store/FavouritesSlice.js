@@ -1,22 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+// Create a slice for managing the favourites state
 const favouritesSlice = createSlice({
   name: "favourites",
   initialState: {
-    favourites: [],
+    favourites: [], // Initialize the favourites array
   },
 
   reducers: {
+    // Add an item to the favourites array
     addtofavourite: (state, action) => {
-      const exists = state.favourites.some(
-        (item) => item.id === action.payload.id
-      );
+      const { id } = action.payload;
+      const isFavourite = state.favourites.some((item) => item.id === id);
 
-     if (!exists) {
-       state.favourites.push(action.payload);
-     }
+      if (!isFavourite) {
+        state.favourites.push(action.payload);
+      }
     },
-    removefavourite(state, action) {
-      return state.favourites.filter((item) => item.id !== action.payload.id);
+    // Remove an item from the favourites array
+    removefavourite: (state, action) => {
+      const { id } = action.payload;
+      return state.favourites.filter((item) => item.id !== id);
     },
   },
 });

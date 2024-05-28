@@ -8,27 +8,33 @@ const Favourites = () => {
 
   const dispatch = useDispatch();
 
+  // This is a reducer function, The purpose of this reducer is to handle an "add to favourite" action.
   const handlefavouriteRemove = (movie) => {
     dispatch(removefavourite(movie));
   };
 
   return (
-    <div className="relative">
-      <Link to="/">
-        <div className="lg:text-3xl uppercase text-xl font-bold text-red-500 absolute m-12 cursor-pointer">
-          Movie<span className="bg-white px-2">Box</span>
-        </div>
-      </Link>
-      <div className="lg:h-[400px] h-40 bg-slate-950 flex items-center justify-center">
+    <div>
+      <div className="lg:h-[400px] h-40  flex flex-col items-center justify-center favourite-container">
         <h1 className="text-white lg:text-6xl text-2xl font-bold">
           Enjoy your Favourites 😃
         </h1>
+        <Link to="/">
+          <div className="border-b capitalize font-bold text-zinc-100 cursor-pointer">
+            Back toHome
+          </div>
+        </Link>
       </div>
-      <div className="grid place-items-center p-2">
-        <h1 className="text-xl font-bold px-4 mt-4">Your Favourites 👍</h1>
-        <div className="favourites flex w-full gap-2 flex-wrap justify-center items-start p-2 rounded-md border-2">
+      <div className="flex flex-col items-center justify-center w-full gap-2">
+        <h1 className=" p-2 font-bold px-4 bg-slate-500/20 w-full text-center text-2xl ">
+          Your Favourites 👍
+        </h1>
+        <div className="favourites flex w-full gap-6 flex-wrap justify-center items-start p-2 rounded-md">
           {favourites.map((movies) => (
-            <div className="w-[20vw]" key={movies.id}>
+            <div
+              className="md:w-[20vw] w-full border-2 p-2 rounded-md bg-slate-900/10 hover:shadow-md  hover:scale-105 duration-300"
+              key={movies.id}
+            >
               <Link to={movies.imdb_url}>
                 <div className="h-[30vh] bg-slate-900/20 rounded-md bg-blend-multiply">
                   <img
@@ -36,14 +42,21 @@ const Favourites = () => {
                     alt={movies.movie}
                     className="object-cover h-full w-full rounded-md"
                   />
-                  
                 </div>
               </Link>
-              <div className="movie-info">
-                <h1>{movies.movie}</h1>
-                <p>{movies.rating }</p>
+              <div className="movie-info mb-2">
+                <h1 className="text-xl">{movies.movie}</h1>
+                <p className="bg-yellow-500 p-2  w-fit ">
+                  Rating:
+                  {movies.rating}
+                </p>
               </div>
-              <button className="p-2 bg-slate-900 text-white" onClick={()=>handlefavouriteRemove(movies.id)}>Remove</button>
+              <button
+                className="p-2 bg-slate-900 text-white w-full"
+                onClick={() => handlefavouriteRemove(movies.id)}
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
